@@ -24,10 +24,35 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What problem does the context API help solve?
+
+Ans.With the introduction of reacts Context API we no longer have to pass props down from component to component - what React devs call “prop drilling”. We can now store data on a context object, and retrieve that data in the necessary components from the context object, not props!
+
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+Ans.Actions:Actions in Redux are packets of information that contain an action type and associated data.
+            Actions are “dispatched” to our reducer - aka, passed into the reducer function as an argument. When our reducer recieves an action, it will update the state according to the type and payload on the action.
+
+    Reducers:Reducers calculate the new version of state based on the current state and a given Action. 
+             Reducers are pure functions and they are the glue that bind together our Actions and our Store.
+
+    Store:The state for the whole application is contained inside the Store.
+
+    It means that there is only one place which represents state of application, and UI listens to it. In React-Redux applications, when Redux is a single source of truth, it means that the only way to change  data in UI is to dispatch redux action which will change state within redux reducer. This is the reason store is known as a 'single source of truth' in a redux application.                    
+
 3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Ans.Application state is global, and component state is local. Flux or a flux-like library like Redux, use what they call "stores" to hold application state. That means any component, anywhere in the app can access it (kind of like a database) so long as they hook into it.
+Component state however, lives within that specific component. As such, it can only be updated within that component and passed down to its children via props.
+
 4. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+Ans.By nature Redux is synchronous. Because of this we need to apply some middleware to extend the functionality of our Redux package to allow for things like, promises (which are asynchronous). Redux-Thunk package as a middleware of Redux is used to extend actions so that you have the ability to consume promises.
+When an action creator returns a function, that function will get executed by the Redux Thunk middleware. This function doesn't need to be pure; it is thus allowed to have side effects, including executing asynchronous API calls.
+
 5. What is your favorite state management system you've learned and this sprint? Please explain why!
+
+Ans.Redux is my favorite state management system.
+Redux makes it easy to debug an application. By logging actions and state, it is easy to understand coding errors, network errors, and other forms of bugs that might come up during production. Ease of testing. It is easy to test Redux apps since functions used to change the state of pure functions.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 
